@@ -15,6 +15,24 @@ const LocationFilter: React.FC<LocationFilterProps> = ({
 }) => {
   const locations = ['All', ...getAllCities()];
   
+  // Get color based on location name for a fun look
+  const getButtonColor = (location: string) => {
+    const colors = [
+      'bg-event-softPurple text-event-purple',
+      'bg-event-softGreen text-green-600',
+      'bg-event-softBlue text-blue-600',
+      'bg-event-softPeach text-orange-700',
+      'bg-event-softYellow text-amber-700',
+      'bg-event-softPink text-pink-600',
+    ];
+    
+    if (location === 'All') return '';
+    
+    // Generate a consistent color based on the location name
+    const index = location.charCodeAt(0) % colors.length;
+    return colors[index];
+  };
+  
   return (
     <div className="flex flex-wrap gap-2 mb-6">
       {locations.map((location) => (
@@ -22,9 +40,9 @@ const LocationFilter: React.FC<LocationFilterProps> = ({
           key={location}
           variant={selectedLocation === location ? "default" : "outline"}
           size="sm"
-          className={selectedLocation === location 
-            ? "bg-event-purple hover:bg-event-darkPurple" 
-            : "text-gray-700 hover:text-event-purple"}
+          className={`transition-all duration-300 ${selectedLocation === location 
+            ? "bg-event-purple hover:bg-event-darkPurple animate-scale-in" 
+            : `text-gray-700 hover:text-event-purple ${getButtonColor(location)}`}`}
           onClick={() => onSelectLocation(location)}
         >
           {location === 'All' ? location : (

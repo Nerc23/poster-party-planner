@@ -8,6 +8,7 @@ import LocationFilter from '@/components/LocationFilter';
 import PriceFilter from '@/components/PriceFilter';
 import { getAllEvents, getEventsByPriceRange } from '@/services/eventService';
 import { Button } from '@/components/ui/button';
+import { Calendar, MapPin, Party } from 'lucide-react';
 
 const Events = () => {
   const [selectedCategory, setSelectedCategory] = useState('All');
@@ -36,16 +37,30 @@ const Events = () => {
       <Navbar />
       
       <main className="flex-grow">
-        <div className="bg-event-softPurple py-12 mb-8">
-          <div className="container mx-auto px-4">
-            <h1 className="text-3xl md:text-4xl font-bold text-center">All Events</h1>
+        <div className="bg-gradient-to-br from-event-softPurple via-white to-event-softYellow py-12 mb-8 bg-confetti">
+          <div className="container mx-auto px-4 relative">
+            <div className="floating-element absolute -top-4 left-1/4 opacity-20">
+              <Calendar className="h-16 w-16 text-event-purple" />
+            </div>
+            <div className="bouncing-element absolute -bottom-6 right-1/4 opacity-20">
+              <MapPin className="h-12 w-12 text-event-purple" />
+            </div>
+            <h1 className="text-4xl md:text-5xl font-bold text-center mb-2">
+              <span className="text-event-purple">South African</span> Events
+            </h1>
+            <p className="text-center text-gray-700 max-w-2xl mx-auto">
+              Discover exciting conferences, concerts, shows, markets, and festivals throughout South Africa
+            </p>
           </div>
         </div>
         
         <div className="container mx-auto px-4 pb-12">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-            <div className="md:col-span-1 bg-white p-6 rounded-lg border shadow-sm">
-              <h3 className="font-semibold mb-4 text-lg">Filters</h3>
+            <div className="md:col-span-1 bg-white p-6 rounded-xl border shadow-sm">
+              <h3 className="font-semibold mb-4 text-lg flex items-center">
+                <Party className="h-5 w-5 mr-2 text-event-purple" />
+                <span>Event Filters</span>
+              </h3>
               
               <div className="mb-6">
                 <h4 className="font-medium mb-2">Category</h4>
@@ -72,7 +87,7 @@ const Events = () => {
               </div>
               
               <Button 
-                className="w-full bg-event-purple hover:bg-event-darkPurple"
+                className="w-full bg-gradient-to-r from-event-purple to-event-magentaPink hover:from-event-magentaPink hover:to-event-purple"
                 onClick={() => {
                   // Reset filters
                   setSelectedCategory('All');
@@ -94,7 +109,7 @@ const Events = () => {
                       setSelectedLocation('All');
                       setMaxPrice(150);
                     }}
-                    className="bg-event-purple hover:bg-event-darkPurple"
+                    className="bg-gradient-to-r from-event-purple to-event-magentaPink hover:from-event-magentaPink hover:to-event-purple"
                   >
                     Reset Filters
                   </Button>
