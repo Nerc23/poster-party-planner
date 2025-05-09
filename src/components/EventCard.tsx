@@ -16,11 +16,17 @@ const EventCard: React.FC<EventCardProps> = ({ event }) => {
         <img 
           src={event.imageUrl} 
           alt={event.title}
-          className="event-card-image"
+          className="event-card-image rounded-t-lg h-44 w-full object-cover"
         />
         <Badge className="absolute top-3 right-3 bg-event-purple hover:bg-event-purple">
           {event.category}
         </Badge>
+        
+        {event.specialOffer && (
+          <Badge className="absolute bottom-3 left-3 bg-amber-500 hover:bg-amber-500 text-xs">
+            Special: {event.specialOffer}
+          </Badge>
+        )}
       </div>
       
       <div className="p-4">
@@ -33,7 +39,7 @@ const EventCard: React.FC<EventCardProps> = ({ event }) => {
         
         <div className="flex items-center text-sm text-gray-500 mb-3">
           <MapPin className="h-4 w-4 mr-1 flex-shrink-0" />
-          <span className="truncate">{event.location}</span>
+          <span className="truncate">{event.location}, {event.city}</span>
         </div>
         
         <p className="text-sm text-gray-600 line-clamp-2 mb-3">
@@ -50,7 +56,12 @@ const EventCard: React.FC<EventCardProps> = ({ event }) => {
             <span className="text-xs text-gray-500">{event.organizer.name}</span>
           </div>
           {event.price && (
-            <span className="text-sm font-semibold text-event-purple">{event.price}</span>
+            <span className="text-sm font-semibold text-event-purple">
+              {event.price === 'Free' ? 
+                <span className="text-green-600">Free</span> : 
+                event.price
+              }
+            </span>
           )}
         </div>
       </div>

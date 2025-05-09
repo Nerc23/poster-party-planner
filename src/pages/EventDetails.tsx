@@ -1,7 +1,7 @@
 
 import React, { useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
-import { Calendar, MapPin, Clock, User, ArrowLeft, Share2 } from 'lucide-react';
+import { Calendar, MapPin, Clock, User, ArrowLeft, Share2, Ticket } from 'lucide-react';
 import { getEventById, formatEventDate } from '@/services/eventService';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -54,7 +54,7 @@ const EventDetails = () => {
                 
                 <div className="flex items-center mb-4 text-gray-600">
                   <MapPin className="h-5 w-5 mr-2 text-event-purple" />
-                  <span>{event.location}</span>
+                  <span>{event.location}, {event.city}</span>
                 </div>
                 
                 <div className="flex items-center mb-6">
@@ -86,15 +86,28 @@ const EventDetails = () => {
             
             <div>
               <div className="bg-white p-6 rounded-xl border shadow-sm sticky top-6">
+                {event.specialOffer && (
+                  <div className="mb-6 p-3 bg-amber-50 border border-amber-200 rounded-lg">
+                    <p className="text-amber-700 text-sm font-medium">Special Offer</p>
+                    <p className="text-amber-800">{event.specialOffer}</p>
+                  </div>
+                )}
+                
                 {event.price ? (
                   <div className="mb-6">
                     <p className="text-gray-500 text-sm">Price</p>
-                    <p className="text-xl font-bold text-event-purple">{event.price}</p>
+                    <div className="flex items-center">
+                      <Ticket className="h-5 w-5 mr-2 text-event-purple" />
+                      <p className="text-xl font-bold text-event-purple">{event.price}</p>
+                    </div>
                   </div>
                 ) : (
                   <div className="mb-6">
                     <p className="text-gray-500 text-sm">Price</p>
-                    <p className="text-xl font-bold text-green-600">Free</p>
+                    <div className="flex items-center">
+                      <Ticket className="h-5 w-5 mr-2 text-green-600" />
+                      <p className="text-xl font-bold text-green-600">Free</p>
+                    </div>
                   </div>
                 )}
                 
@@ -125,7 +138,7 @@ const EventDetails = () => {
                       <MapPin className="h-5 w-5 mr-3 text-gray-500 mt-0.5" />
                       <div>
                         <p className="font-medium">Location</p>
-                        <p className="text-sm text-gray-600">{event.location}</p>
+                        <p className="text-sm text-gray-600">{event.location}, {event.city}</p>
                       </div>
                     </div>
                     

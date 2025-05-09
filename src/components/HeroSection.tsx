@@ -1,10 +1,35 @@
 
-import React from 'react';
-import { Search } from 'lucide-react';
+import React, { useState } from 'react';
+import { Search, MapPin } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
+import { getAllCities } from '@/services/eventService';
+import { 
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
-const HeroSection: React.FC = () => {
+interface HeroSectionProps {
+  onLocationSelect: (location: string) => void;
+}
+
+const HeroSection: React.FC<HeroSectionProps> = ({ onLocationSelect }) => {
+  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedLocation, setSelectedLocation] = useState('Select location');
+  const cities = getAllCities();
+
+  const handleSearch = () => {
+    // In a real app, this would trigger a search with both terms
+    console.log('Searching for:', searchTerm, 'in location:', selectedLocation);
+  };
+
+  const handleLocationSelect = (city: string) => {
+    setSelectedLocation(city);
+    onLocationSelect(city);
+  };
+
   return (
     <div className="relative bg-gradient-to-br from-event-softPurple to-event-lightPurple py-20 px-4 mb-12">
       <div className="container mx-auto max-w-3xl text-center">
@@ -12,7 +37,7 @@ const HeroSection: React.FC = () => {
           Discover Amazing Events Near You
         </h1>
         <p className="text-lg text-gray-700 mb-8 max-w-2xl mx-auto">
-          Find and join exciting events, workshops, and meetups that match your interests
+          Find local events, food markets, and activities that match your interests
         </p>
         
         <div className="flex flex-col sm:flex-row items-center max-w-lg mx-auto gap-2">
@@ -21,9 +46,34 @@ const HeroSection: React.FC = () => {
             <Input 
               placeholder="Search events..." 
               className="pl-10 w-full"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
             />
           </div>
-          <Button className="w-full sm:w-auto bg-event-purple hover:bg-event-darkPurple text-white">
+          
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="outline" className="w-full sm:w-auto flex justify-between">
+                <MapPin className="h-4 w-4 mr-2" />
+                <span className="truncate">{selectedLocation}</span>
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent className="w-52">
+              <DropdownMenuItem onClick={() => handleLocationSelect('All')}>
+                All Locations
+              </DropdownMenuItem>
+              {cities.map((city) => (
+                <DropdownMenuItem key={city} onClick={() => handleLocationSelect(city)}>
+                  {city}
+                </DropdownMenuItem>
+              ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
+          
+          <Button 
+            className="w-full sm:w-auto bg-event-purple hover:bg-event-darkPurple text-white"
+            onClick={handleSearch}
+          >
             Find Events
           </Button>
         </div>
