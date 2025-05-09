@@ -2,7 +2,7 @@
 import React from 'react';
 import { getAllCities } from '@/services/eventService';
 import { Button } from '@/components/ui/button';
-import { MapPin } from 'lucide-react';
+import { MapPin, Map, Compass } from 'lucide-react';
 
 interface LocationFilterProps {
   selectedLocation: string;
@@ -34,25 +34,37 @@ const LocationFilter: React.FC<LocationFilterProps> = ({
   };
   
   return (
-    <div className="flex flex-wrap gap-2 mb-6">
-      {locations.map((location) => (
-        <Button
-          key={location}
-          variant={selectedLocation === location ? "default" : "outline"}
-          size="sm"
-          className={`transition-all duration-300 ${selectedLocation === location 
-            ? "bg-event-purple hover:bg-event-darkPurple animate-scale-in" 
-            : `text-gray-700 hover:text-event-purple ${getButtonColor(location)}`}`}
-          onClick={() => onSelectLocation(location)}
-        >
-          {location === 'All' ? location : (
-            <>
-              <MapPin className="h-3.5 w-3.5 mr-1" />
-              {location}
-            </>
-          )}
-        </Button>
-      ))}
+    <div>
+      <div className="flex items-center mb-2 text-sm text-event-purple">
+        <Compass className="h-4 w-4 mr-1" />
+        <span>Discover events across South Africa</span>
+      </div>
+      
+      <div className="flex flex-wrap gap-2 mb-6">
+        {locations.map((location) => (
+          <Button
+            key={location}
+            variant={selectedLocation === location ? "default" : "outline"}
+            size="sm"
+            className={`transition-all duration-300 ${selectedLocation === location 
+              ? "bg-event-purple hover:bg-event-darkPurple animate-scale-in" 
+              : `text-gray-700 hover:text-event-purple ${getButtonColor(location)}`}`}
+            onClick={() => onSelectLocation(location)}
+          >
+            {location === 'All' ? (
+              <>
+                <Map className="h-3.5 w-3.5 mr-1" />
+                All Locations
+              </>
+            ) : (
+              <>
+                <MapPin className="h-3.5 w-3.5 mr-1" />
+                {location}
+              </>
+            )}
+          </Button>
+        ))}
+      </div>
     </div>
   );
 };

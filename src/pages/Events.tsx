@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -8,7 +7,7 @@ import LocationFilter from '@/components/LocationFilter';
 import PriceFilter from '@/components/PriceFilter';
 import { getAllEvents, getEventsByPriceRange } from '@/services/eventService';
 import { Button } from '@/components/ui/button';
-import { Calendar, MapPin, Party } from 'lucide-react';
+import { Calendar, MapPin, Search } from 'lucide-react';
 
 const Events = () => {
   const [selectedCategory, setSelectedCategory] = useState('All');
@@ -58,7 +57,7 @@ const Events = () => {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
             <div className="md:col-span-1 bg-white p-6 rounded-xl border shadow-sm">
               <h3 className="font-semibold mb-4 text-lg flex items-center">
-                <Party className="h-5 w-5 mr-2 text-event-purple" />
+                <Search className="h-5 w-5 mr-2 text-event-purple" />
                 <span>Event Filters</span>
               </h3>
               
