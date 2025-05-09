@@ -1,17 +1,25 @@
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
-import { Calendar, MapPin, Clock, User, ArrowLeft, Share2, Ticket } from 'lucide-react';
+import { Calendar, MapPin, Clock, User, ArrowLeft, Share2, Ticket, Bell, BellOff } from 'lucide-react';
 import { getEventById, formatEventDate } from '@/services/eventService';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
+import { toast } from "@/hooks/use-toast";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import { Input } from "@/components/ui/input";
 
 const EventDetails = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const event = getEventById(id || '');
+  const [hasReminder, setHasReminder] = useState(false);
   
   useEffect(() => {
     if (!event) {
@@ -22,6 +30,82 @@ const EventDetails = () => {
   if (!event) {
     return null;
   }
+  
+  // Function to toggle reminder
+  const toggleReminder = () => {
+    setHasReminder(!hasReminder);
+    
+    if (!hasReminder) {
+      toast({
+        title: "Reminder set!",
+        description: "We'll notify you before this event starts.",
+      });
+    } else {
+      toast({
+        title: "Reminder removed",
+        description: "You won't receive notifications for this event.",
+      });
+    }
+  };
+
+  // Function to share event
+  const shareEvent = () => {
+    // Create the share URL for the current event
+    const shareUrl = window.location.href;
+    
+    if (navigator.share) {
+      navigator.share({
+        title: event.title,
+        text: `Check out this event: ${event.title}`,
+        url: shareUrl,
+      })
+      .then(() => {
+        toast({
+          title: "Shared successfully!",
+          description: "The event has been shared.",
+        });
+      })
+      .catch(error => {
+        console.error('Error sharing:', error);
+        // Fallback to clipboard
+        copyToClipboard(shareUrl);
+      });
+    } else {
+      // Fallback for browsers that don't support the Web Share API
+      copyToClipboard(shareUrl);
+    }
+  };
+
+  // Helper function to copy link to clipboard
+  const copyToClipboard = (text: string) => {
+    navigator.clipboard.writeText(text).then(
+      () => {
+        toast({
+          title: "Link copied!",
+          description: "Event link copied to clipboard.",
+        });
+      },
+      (err) => {
+        console.error('Could not copy text: ', err);
+        toast({
+          title: "Copy failed",
+          description: "Could not copy the event link.",
+          variant: "destructive",
+        });
+      }
+    );
+  };
+  
+  // Function to redirect to ticket purchase
+  const buyTickets = () => {
+    // For demonstration, we'll redirect to Computicket
+    window.open('https://www.computicket.com/', '_blank');
+    
+    toast({
+      title: "Redirecting to Computicket",
+      description: "You'll be able to purchase tickets for this event.",
+    });
+  };
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -111,14 +195,66 @@ const EventDetails = () => {
                   </div>
                 )}
                 
-                <Button className="w-full mb-3 bg-event-purple hover:bg-event-darkPurple">
-                  Register Now
-                </Button>
+                {event.category === 'Sports' || event.price !== 'Free' ? (
+                  <Button 
+                    className="w-full mb-3 bg-event-purple hover:bg-event-darkPurple"
+                    onClick={buyTickets}
+                  >
+                    Buy Tickets on Computicket
+                  </Button>
+                ) : (
+                  <Button className="w-full mb-3 bg-event-purple hover:bg-event-darkPurple">
+                    Register Now
+                  </Button>
+                )}
                 
-                <Button variant="outline" className="w-full flex items-center justify-center">
-                  <Share2 className="h-4 w-4 mr-2" />
-                  Share Event
-                </Button>
+                <div className="grid grid-cols-2 gap-3 mb-3">
+                  <Button 
+                    variant="outline" 
+                    className="flex items-center justify-center"
+                    onClick={toggleReminder}
+                  >
+                    {hasReminder ? (
+                      <>
+                        <BellOff className="h-4 w-4 mr-2" />
+                        Remove Reminder
+                      </>
+                    ) : (
+                      <>
+                        <Bell className="h-4 w-4 mr-2" />
+                        Set Reminder
+                      </>
+                    )}
+                  </Button>
+                  
+                  <Popover>
+                    <PopoverTrigger asChild>
+                      <Button variant="outline" className="flex items-center justify-center">
+                        <Share2 className="h-4 w-4 mr-2" />
+                        Share Event
+                      </Button>
+                    </PopoverTrigger>
+                    <PopoverContent className="w-72">
+                      <div className="space-y-4">
+                        <h4 className="font-medium text-center">Share this event</h4>
+                        <div className="flex items-center space-x-2">
+                          <Input 
+                            readOnly 
+                            value={window.location.href} 
+                            className="text-xs"
+                          />
+                          <Button 
+                            variant="outline" 
+                            size="sm" 
+                            onClick={shareEvent}
+                          >
+                            Copy
+                          </Button>
+                        </div>
+                      </div>
+                    </PopoverContent>
+                  </Popover>
+                </div>
                 
                 <div className="mt-6 pt-6 border-t">
                   <h3 className="font-semibold mb-3">Event Information</h3>
