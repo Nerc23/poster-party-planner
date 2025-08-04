@@ -63,6 +63,82 @@ const events: Event[] = [
   },
   {
     id: "3",
+    title: "AfricaCom Technology Summit",
+    description: "The continent's largest tech conference bringing together industry leaders, entrepreneurs, and innovators from across Africa. Three days of keynote speeches, panel discussions, product launches, and networking opportunities focusing on digital transformation, fintech, AI, and startup ecosystems. Connect with investors, discover emerging technologies, and explore business opportunities across African markets.",
+    shortDescription: "Africa's largest tech conference with industry leaders and innovation showcases.",
+    date: new Date(2025, 10, 12, 8, 30),
+    endDate: new Date(2025, 10, 14, 17, 0),
+    location: "Cape Town International Convention Centre",
+    city: "Cape Town",
+    imageUrl: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80",
+    category: "Summit",
+    organizer: {
+      name: "AfricaCom Events",
+      imageUrl: "https://randomuser.me/api/portraits/men/85.jpg"
+    },
+    price: "R2800",
+    specialOffer: "Student tickets available at 50% off",
+    isFeatured: true
+  },
+  {
+    id: "4",
+    title: "Mining Indaba Summit",
+    description: "Africa's premier mining investment conference attracting global mining executives, investors, and government officials. The three-day summit covers mining investment opportunities, regulatory developments, sustainability initiatives, and technological innovations in the African mining sector. Network with industry leaders while exploring partnerships and investment opportunities.",
+    shortDescription: "Premier African mining investment conference with global industry leaders.",
+    date: new Date(2025, 1, 3, 8, 0),
+    endDate: new Date(2025, 1, 5, 18, 0),
+    location: "Cape Town International Convention Centre",
+    city: "Cape Town",
+    imageUrl: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80",
+    category: "Summit",
+    organizer: {
+      name: "Mining Indaba Organization",
+      imageUrl: "https://randomuser.me/api/portraits/men/92.jpg"
+    },
+    price: "R4500",
+    specialOffer: "Early registration discounts available",
+    isFeatured: true
+  },
+  {
+    id: "5",
+    title: "Johannesburg Business Networking Breakfast",
+    description: "Monthly networking breakfast bringing together entrepreneurs, business owners, and professionals from various industries in Johannesburg. Enjoy a continental breakfast while making valuable business connections, sharing insights, and exploring collaboration opportunities. Guest speakers share success stories and industry trends. Perfect for expanding your professional network in a relaxed environment.",
+    shortDescription: "Monthly breakfast networking for Johannesburg business professionals and entrepreneurs.",
+    date: new Date(2025, 1, 20, 7, 30),
+    endDate: new Date(2025, 1, 20, 9, 30),
+    location: "Sandton Convention Centre",
+    city: "Johannesburg",
+    imageUrl: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80",
+    category: "Networking Event",
+    organizer: {
+      name: "Johannesburg Business Network",
+      imageUrl: "https://randomuser.me/api/portraits/women/71.jpg"
+    },
+    price: "R180",
+    specialOffer: "First-time attendees get complimentary breakfast",
+    isFeatured: false
+  },
+  {
+    id: "6",
+    title: "Women in Tech Networking Evening",
+    description: "An inspiring evening celebrating women in technology across South Africa. Join female entrepreneurs, developers, executives, and students for networking, mentorship opportunities, and career development discussions. Panel discussions cover breaking barriers in tech, leadership strategies, and building supportive communities. Light refreshments and door prizes included.",
+    shortDescription: "Networking evening celebrating and supporting women in South African tech industry.",
+    date: new Date(2025, 2, 8, 17, 30),
+    endDate: new Date(2025, 2, 8, 20, 30),
+    location: "The Forum Company Sandton",
+    city: "Johannesburg",
+    imageUrl: "https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1469&q=80",
+    category: "Networking Event",
+    organizer: {
+      name: "Women in Tech SA",
+      imageUrl: "https://randomuser.me/api/portraits/women/63.jpg"
+    },
+    price: "R120",
+    specialOffer: "Students attend free with valid ID",
+    isFeatured: true
+  },
+  {
+    id: "7",
     title: "Hermanus Whale Festival",
     description: "Celebrate the annual return of Southern Right whales to Hermanus Bay! This three-day festival combines whale watching with live music, local food stalls, craft markets, and environmental education. Watch whales from the cliff paths, enjoy traditional South African braai, and experience local wines from the nearby Hemel-en-Aarde Valley. Family activities include face painting and educational talks about marine conservation.",
     shortDescription: "Three-day whale watching festival with music, food, and family activities.",
@@ -81,7 +157,7 @@ const events: Event[] = [
     isFeatured: false
   },
   {
-    id: "4",
+    id: "8",
     title: "Durban Curry Festival",
     description: "Celebrate Durban's rich Indian heritage at the annual Curry Festival! Sample authentic curries, bunny chow, samoosas, and traditional Indian sweets from local restaurants and home cooks. Live Bollywood performances, traditional dance, and cooking demonstrations showcase the vibrant culture. This weekend festival at the Durban beachfront is a feast for all senses.",
     shortDescription: "Authentic Indian cuisine festival celebrating Durban's rich cultural heritage.",
@@ -100,7 +176,7 @@ const events: Event[] = [
     isFeatured: true
   },
   {
-    id: "5",
+    id: "9",
     title: "Parkrun Fun Day - Johannesburg",
     description: "Join thousands of runners, walkers, and families for a fun-filled Saturday morning at Delta Park. This weekly 5km event welcomes all fitness levels and ages. After the run, enjoy a community braai, kids' activities, fitness demonstrations, and local vendors selling healthy snacks and sports gear. Free participation with optional donations to local charities.",
     shortDescription: "Weekly 5km community run with family activities and community braai.",
@@ -119,7 +195,7 @@ const events: Event[] = [
     isFeatured: false
   },
   {
-    id: "6",
+    id: "10",
     title: "Stellenbosch Wine & Food Festival",
     description: "Experience the best of South African wine country at this premier wine and food festival. Sample award-winning wines from local vineyards, enjoy gourmet food pairings, and attend masterclasses led by renowned sommeliers. Live jazz music, vineyard tours, and stunning mountain views create the perfect backdrop for this sophisticated celebration of local terroir.",
     shortDescription: "Premier wine festival featuring award-winning local wines and gourmet food pairings.",
@@ -138,7 +214,26 @@ const events: Event[] = [
     isFeatured: true
   },
   {
-    id: "7",
+    id: "11",
+    title: "Cape Town Startup Networking Mixer",
+    description: "Connect with Cape Town's vibrant startup ecosystem at this monthly networking mixer. Meet founders, investors, developers, and service providers while enjoying craft cocktails and gourmet canapés. Pitch sessions, mentor meetings, and informal networking create opportunities for collaborations, funding, and partnerships. Special focus on fintech, healthtech, and cleantech startups.",
+    shortDescription: "Monthly startup networking mixer connecting Cape Town's entrepreneurial community.",
+    date: new Date(2025, 2, 25, 18, 0),
+    endDate: new Date(2025, 2, 25, 21, 0),
+    location: "Workshop17 V&A Waterfront",
+    city: "Cape Town",
+    imageUrl: "https://images.unsplash.com/photo-1515187029135-18ee286d815b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80",
+    category: "Networking Event",
+    organizer: {
+      name: "Cape Town Startup Community",
+      imageUrl: "https://randomuser.me/api/portraits/men/39.jpg"
+    },
+    price: "R150",
+    specialOffer: "Startup founders attend free with pitch deck",
+    isFeatured: false
+  },
+  {
+    id: "12",
     title: "Knysna Forest Marathon",
     description: "Run through the breathtaking indigenous forests of Knysna in this challenging but rewarding marathon. Choose from 21km, 42km, or 10km routes that wind through ancient yellowwood trees, across wooden bridges, and offer spectacular views of the Knysna Heads. Post-race celebrations include local craft beer, boerewors rolls, and live acoustic music.",
     shortDescription: "Scenic forest marathon through Knysna's ancient indigenous forests.",
@@ -156,7 +251,7 @@ const events: Event[] = [
     isFeatured: false
   },
   {
-    id: "8",
+    id: "13",
     title: "Bloemfontein Cherry Festival",
     description: "Celebrate spring's arrival with the annual Cherry Festival in the City of Roses. Japanese cherry blossoms create a pink canopy over food stalls, craft vendors, and live performances. Family activities include cherry pit spitting contests, traditional games, and cultural performances. Sample local delicacies while enjoying the spectacular cherry blossom scenery.",
     shortDescription: "Spring festival celebrating cherry blossoms with food, crafts, and family activities.",
@@ -175,7 +270,7 @@ const events: Event[] = [
     isFeatured: false
   },
   {
-    id: "9",
+    id: "14",
     title: "Soweto Street Festival",
     description: "Experience the vibrant energy of Soweto at this annual street festival celebrating local culture, music, and entrepreneurship. Street food vendors serve authentic township cuisine, local musicians perform on multiple stages, and artists showcase traditional and contemporary African art. Dance workshops, storytelling sessions, and historical tours make this an immersive cultural experience.",
     shortDescription: "Vibrant street festival celebrating Soweto's culture, music, and local entrepreneurship.",
@@ -194,7 +289,7 @@ const events: Event[] = [
     isFeatured: true
   },
   {
-    id: "10",
+    id: "15",
     title: "Cradle Moon Lakeside Family Picnic",
     description: "Pack your blankets and baskets for a perfect family picnic by the tranquil Cradle Moon Lake. This monthly gathering features live acoustic music, children's entertainment, pony rides, and traditional games like three-legged races and egg-and-spoon races. Food vendors offer picnic essentials, or bring your own feast to enjoy under the African sun.",
     shortDescription: "Monthly family picnic by the lake with live music and children's activities.",
@@ -213,7 +308,7 @@ const events: Event[] = [
     isFeatured: false
   },
   {
-    id: "11",
+    id: "16",
     title: "Port Elizabeth Jazz & Heritage Festival",
     description: "Celebrate the rich musical heritage of the Eastern Cape with three days of jazz, gospel, and traditional music performances. Local and visiting musicians perform on multiple stages throughout the historic city center. Traditional food stalls serve vetkoek, koeksisters, and other local favorites while craft vendors display Xhosa beadwork and pottery.",
     shortDescription: "Three-day jazz and heritage festival celebrating Eastern Cape's musical traditions.",
@@ -231,7 +326,7 @@ const events: Event[] = [
     isFeatured: true
   },
   {
-    id: "12",
+    id: "17",
     title: "Pretoria Jacaranda Festival Concert",
     description: "Experience Pretoria's famous jacaranda season with an outdoor concert series in the purple-lined streets. Local orchestras, choirs, and contemporary artists perform under the blooming jacaranda canopy. Food trucks serve gourmet meals while families enjoy the spectacular natural beauty and live music in South Africa's administrative capital.",
     shortDescription: "Outdoor concert series during jacaranda season with orchestras and contemporary artists.",
@@ -248,6 +343,63 @@ const events: Event[] = [
     price: "R95",
     specialOffer: "Season passes available",
     isFeatured: false
+  },
+  {
+    id: "18",
+    title: "Fintech Innovation Summit Johannesburg",
+    description: "Explore the future of financial technology at Africa's premier fintech summit. Leading industry experts, startups, and established financial institutions gather to discuss digital payments, blockchain, cryptocurrency, and financial inclusion. Workshops, pitch competitions, and networking sessions provide opportunities to connect with innovators shaping Africa's financial landscape.",
+    shortDescription: "Premier African fintech summit exploring digital payments and financial innovation.",
+    date: new Date(2025, 4, 15, 9, 0),
+    endDate: new Date(2025, 4, 16, 17, 0),
+    location: "Sandton Convention Centre",
+    city: "Johannesburg",
+    imageUrl: "https://images.unsplash.com/photo-1556742502-ec7c0e9f34b1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80",
+    category: "Summit",
+    organizer: {
+      name: "Fintech Africa",
+      imageUrl: "https://randomuser.me/api/portraits/women/81.jpg"
+    },
+    price: "R1800",
+    specialOffer: "Early bird pricing until end of February",
+    isFeatured: true
+  },
+  {
+    id: "19",
+    title: "Durban Professional Women's Network Lunch",
+    description: "Join successful businesswomen from across KwaZulu-Natal for an inspiring lunch focused on professional development and networking. Guest speakers share insights on leadership, work-life balance, and career advancement. The event includes structured networking sessions, mentorship opportunities, and discussions on supporting women in business across various industries.",
+    shortDescription: "Professional development lunch for businesswomen in KwaZulu-Natal region.",
+    date: new Date(2025, 3, 18, 12, 0),
+    endDate: new Date(2025, 3, 18, 15, 0),
+    location: "Hilton Durban Hotel",
+    city: "Durban",
+    imageUrl: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&auto=format&fit=crop&w=1469&q=80",
+    category: "Networking Event",
+    organizer: {
+      name: "Professional Women KZN",
+      imageUrl: "https://randomuser.me/api/portraits/women/94.jpg"
+    },
+    price: "R280",
+    specialOffer: "Group bookings of 4+ receive 15% discount",
+    isFeatured: false
+  },
+  {
+    id: "20",
+    title: "Renewable Energy Summit Cape Town",
+    description: "Leading summit on renewable energy solutions across Africa, bringing together government officials, investors, and clean energy companies. Explore solar, wind, and hydroelectric opportunities while discussing policy frameworks and investment strategies. Technical sessions cover grid integration, energy storage, and sustainable development goals across the continent.",
+    shortDescription: "Premier renewable energy summit focusing on African clean energy opportunities.",
+    date: new Date(2025, 5, 8, 8, 30),
+    endDate: new Date(2025, 5, 10, 17, 30),
+    location: "Cape Town International Convention Centre",
+    city: "Cape Town",
+    imageUrl: "https://images.unsplash.com/photo-1466611653911-95081537e5b7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80",
+    category: "Summit",
+    organizer: {
+      name: "African Energy Association",
+      imageUrl: "https://randomuser.me/api/portraits/men/77.jpg"
+    },
+    price: "R3200",
+    specialOffer: "Government and NGO representatives get 30% off",
+    isFeatured: true
   }
 ];
 
