@@ -1,5 +1,5 @@
 
-# South African Events Finder
+# South African Events Finder(demo website)
 
 A comprehensive web application for discovering and exploring events across South Africa, from vibrant food markets and jazz festivals to professional summits and networking opportunities.
 
@@ -48,24 +48,14 @@ This project is built with modern web technologies:
 - **React Router**: Client-side routing
 - **React Query**: Data fetching and state management
 
-## Getting Started
-
-Compatible with Netlify, Vercel, GitHub Pages, and other static hosting platforms.
-
-## Contributing
-
-This project welcomes contributions! Whether it's adding new event categories, improving the user interface, or expanding location coverage, your contributions help make the platform better for everyone.
 
 ## License
 
 This project is licensed under the BSD 3-Clause License - see the [LICENSE](LICENSE%20(1).txt) file for details.
 
-## Support
-
-For questions or support, please visit the [Lovable Discord community](https://discord.com/channels/1119885301872070706/1280461670979993613).
 
 ---
 
-**Live Demo**: [View the application](https://lovable.dev/projects/d96a84b9-8810-445d-ba78-8573b32681c8)
+**Live Demo**: [View the application]https://eventhub123.netlify.app/)
 
 Built with ❤️ for the South African community
