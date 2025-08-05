@@ -1,73 +1,141 @@
-# Welcome to your Lovable project
 
-## Project info
+# South African Events Finder
 
-**URL**: https://lovable.dev/projects/d96a84b9-8810-445d-ba78-8573b32681c8
+A comprehensive web application for discovering and exploring events across South Africa, from vibrant food markets and jazz festivals to professional summits and networking opportunities.
 
-## How can I edit this code?
+## About the Application
 
-There are several ways of editing your application.
+This modern React-based web application helps users discover diverse events happening throughout South Africa. Whether you're looking for cultural experiences, professional development opportunities, or entertainment, our platform connects you with events that match your interests and location preferences.
 
-**Use Lovable**
+### Event Categories
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/d96a84b9-8810-445d-ba78-8573b32681c8) and start prompting.
+- **Food Markets**: Local farmers markets, food festivals, and culinary experiences
+- **Music & Entertainment**: Jazz festivals, concerts, live performances
+- **Family Events**: Fun-days, picnic events, community gatherings  
+- **Professional**: Summits, conferences, networking events, business meetups
+- **Cultural**: Art exhibitions, cultural festivals, heritage events
 
-Changes made via Lovable will be committed automatically to this repo.
+### Key Features
 
-**Use your preferred IDE**
+- **Location-Based Search**: Find events in specific South African cities and regions
+- **Category Filtering**: Filter events by type to find exactly what you're looking for
+- **Price Range Filtering**: Search within your budget with flexible price options
+- **Event Details**: Comprehensive information including dates, venues, and descriptions
+- **Responsive Design**: Seamless experience across desktop and mobile devices
+- **Calendar Integration**: View events in an organized calendar format
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### Supported Locations
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+Events are available across major South African cities including:
+- Cape Town
+- Johannesburg  
+- Durban
+- Pretoria
+- Port Elizabeth
+- Bloemfontein
+- Nelspruit
+- And many more locations
 
-Follow these steps:
+## Technology Stack
+
+This project is built with modern web technologies:
+
+- **React**: Component-based UI library
+- **TypeScript**: Type-safe JavaScript development
+- **Vite**: Fast build tool and development server
+- **Tailwind CSS**: Utility-first CSS framework
+- **Shadcn/UI**: Modern UI components
+- **React Router**: Client-side routing
+- **React Query**: Data fetching and state management
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+
+### Installation
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
+# Clone the repository
 git clone <YOUR_GIT_URL>
 
-# Step 2: Navigate to the project directory.
+# Navigate to the project directory
 cd <YOUR_PROJECT_NAME>
 
-# Step 3: Install the necessary dependencies.
-npm i
+# Install dependencies
+npm install
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Start the development server
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+The application will be available at `http://localhost:8080`
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## Development
 
-**Use GitHub Codespaces**
+### Project Structure
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+```
+src/
+├── components/         # Reusable UI components
+├── pages/             # Application pages/routes
+├── services/          # API and data services
+├── hooks/             # Custom React hooks
+├── lib/               # Utility functions
+└── types/             # TypeScript type definitions
+```
 
-## What technologies are used for this project?
+### Available Scripts
 
-This project is built with:
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build locally
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## Deployment
 
-## How can I deploy this project?
+### Using Lovable
 
-Simply open [Lovable](https://lovable.dev/projects/d96a84b9-8810-445d-ba78-8573b32681c8) and click on Share -> Publish.
+1. Open [Lovable Project](https://lovable.dev/projects/d96a84b9-8810-445d-ba78-8573b32681c8)
+2. Click Share → Publish
+3. Your app will be deployed automatically
 
-## Can I connect a custom domain to my Lovable project?
+### Custom Domain
 
-Yes, you can!
+To connect a custom domain:
+1. Navigate to Project > Settings > Domains in Lovable
+2. Click "Connect Domain"
+3. Follow the setup instructions
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+*Note: A paid Lovable plan is required for custom domains*
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+### Self-Hosting
+
+The application can be deployed to any static hosting service:
+
+```sh
+# Build the project
+npm run build
+
+# Deploy the dist/ folder to your hosting provider
+```
+
+Compatible with Netlify, Vercel, GitHub Pages, and other static hosting platforms.
+
+## Contributing
+
+This project welcomes contributions! Whether it's adding new event categories, improving the user interface, or expanding location coverage, your contributions help make the platform better for everyone.
+
+## License
+
+This project is licensed under the BSD 3-Clause License - see the [LICENSE](LICENSE%20(1).txt) file for details.
+
+## Support
+
+For questions or support, please visit the [Lovable Discord community](https://discord.com/channels/1119885301872070706/1280461670979993613).
+
+---
+
+**Live Demo**: [View the application](https://lovable.dev/projects/d96a84b9-8810-445d-ba78-8573b32681c8)
+
+Built with ❤️ for the South African community
