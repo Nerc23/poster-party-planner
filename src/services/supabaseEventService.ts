@@ -93,7 +93,7 @@ export const getSupabaseEventById = async (id: string): Promise<SupabaseEvent | 
     .select('*')
     .eq('id', id)
     .eq('status', 'active')
-    .single();
+    .maybeSingle();
 
   if (error) {
     console.error('Error fetching event:', error);
@@ -124,7 +124,14 @@ export const registerForEvent = async (eventId: string): Promise<boolean> => {
   }
 
   // Update registered count
-  await supabase.rpc('increment_registration_count', { event_id: eventId });
+  const { error: updateError } = await supabase
+    .from('events')
+    .update({ registered_count: supabase.raw('registered_count + 1') })
+    .eq('id', eventId);
+
+  if (updateError) {
+    console.error('Error updating registration count:', updateError);
+  }
 
   return true;
 };
@@ -143,7 +150,7 @@ export const isUserRegistered = async (eventId: string): Promise<boolean> => {
     .eq('user_id', user.id)
     .eq('event_id', eventId)
     .eq('status', 'registered')
-    .single();
+    .maybeSingle();
 
   return !error && !!data;
 };
@@ -173,7 +180,18 @@ export const getUserRegistrations = async (): Promise<SupabaseEvent[]> => {
 };
 
 // Create new event
-export const createEvent = async (eventData: Partial<SupabaseEvent>): Promise<SupabaseEvent | null> => {
+export const createEvent = async (eventData: {
+  title: string;
+  description?: string;
+  date: string;
+  location: string;
+  city: string;
+  category: string;
+  price?: number;
+  image_url?: string;
+  organizer_name: string;
+  capacity?: number;
+}): Promise<SupabaseEvent | null> => {
   const { data: { user } } = await supabase.auth.getUser();
   
   if (!user) {
@@ -183,8 +201,17 @@ export const createEvent = async (eventData: Partial<SupabaseEvent>): Promise<Su
   const { data, error } = await supabase
     .from('events')
     .insert({
-      ...eventData,
-      organizer_email: user.email,
+      title: eventData.title,
+      description: eventData.description || null,
+      date: eventData.date,
+      location: eventData.location,
+      city: eventData.city,
+      category: eventData.category,
+      price: eventData.price || 0,
+      image_url: eventData.image_url || null,
+      organizer_name: eventData.organizer_name,
+      organizer_email: user.email || '',
+      capacity: eventData.capacity || null,
     })
     .select()
     .single();
