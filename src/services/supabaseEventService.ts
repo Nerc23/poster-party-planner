@@ -123,14 +123,22 @@ export const registerForEvent = async (eventId: string): Promise<boolean> => {
     return false;
   }
 
-  // Update registered count
-  const { error: updateError } = await supabase
+  // Update registered count by fetching current count and incrementing
+  const { data: eventData, error: fetchError } = await supabase
     .from('events')
-    .update({ registered_count: supabase.raw('registered_count + 1') })
-    .eq('id', eventId);
+    .select('registered_count')
+    .eq('id', eventId)
+    .single();
 
-  if (updateError) {
-    console.error('Error updating registration count:', updateError);
+  if (!fetchError && eventData) {
+    const { error: updateError } = await supabase
+      .from('events')
+      .update({ registered_count: eventData.registered_count + 1 })
+      .eq('id', eventId);
+
+    if (updateError) {
+      console.error('Error updating registration count:', updateError);
+    }
   }
 
   return true;
