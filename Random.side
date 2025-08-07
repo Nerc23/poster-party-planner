@@ -1,0 +1,171 @@
+{
+  "id": "a090af8a-b532-4ad2-b9e1-725298cc133c",
+  "version": "2.0",
+  "name": "Random",
+  "url": "https://eventshub123.netlify.app/",
+  "tests": [{
+    "id": "635a2ac7-5b18-4bdb-b9ca-12d9a945207f",
+    "name": "Login ",
+    "commands": [{
+      "id": "6e794a6f-bb6c-48fc-9a4f-cc40dc8b1854",
+      "comment": "",
+      "command": "open",
+      "target": "https://eventhub123.netlify.app/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "f9e6a440-a5f7-4f8a-909b-d7a5eae9edb4",
+      "comment": "sign in",
+      "command": "clickAt",
+      "target": "css=.bg-muted:nth-child(1)",
+      "targets": [
+        ["css=.bg-muted:nth-child(1)", "css:finder"],
+        ["xpath=//button[@id='radix-:r5:']/span/span", "xpath:idRelative"],
+        ["xpath=//span/span", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "8c1e84c9-34a2-49aa-b3f8-b0aa7c2d79a8",
+      "comment": "",
+      "command": "click",
+      "target": "id=signin-email",
+      "targets": [],
+      "value": "nerciamotsepe@gmail.com"
+    }, {
+      "id": "6da07130-f8c1-40a5-b88f-cd286d2738e5",
+      "comment": "",
+      "command": "click",
+      "target": "id=signin-password",
+      "targets": [],
+      "value": "Nash123"
+    }, {
+      "id": "e22ffa69-2668-45c5-aa02-9890cc8175b0",
+      "comment": "",
+      "command": "click",
+      "target": "css=.space-y-4 > .inline-flex",
+      "targets": [
+        ["css=.space-y-4 > .inline-flex", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//div[@id='radix-:r5:-content-signin']/form/button", "xpath:idRelative"],
+        ["xpath=//form/button", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "0aabfa8f-fb1d-4487-bcbe-bcc24e4efec1",
+    "name": "Test Login in Page",
+    "commands": [{
+      "id": "e8a751d1-39f7-4141-a359-dd400beedd82",
+      "comment": "",
+      "command": "open",
+      "target": "https://eventhub123.netlify.app/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "9947ef83-ca5c-47cc-b001-d497e0fa7e9c",
+      "comment": "",
+      "command": "clickAt",
+      "target": "css=.bg-muted:nth-child(1)",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "5b39226e-47c1-48e0-8a78-44c8cbe58493",
+      "comment": "",
+      "command": "click",
+      "target": "id=signin-email",
+      "targets": [],
+      "value": "nerciamotsepe@gmail.com"
+    }, {
+      "id": "7df8a416-c1d0-4331-ae29-8efca6c57874",
+      "comment": "",
+      "command": "click",
+      "target": "id=signin-password",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "3877d252-9c06-4ad1-aed0-3754ad3804cc",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=//div[@id='radix-:r21:-content-signin']/form/button",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "487442d0-a1d4-4af3-8927-af9eea7c3510",
+      "comment": "",
+      "command": "waitForElementPresent",
+      "target": "css=.form-error",
+      "targets": [],
+      "value": "30000"
+    }, {
+      "id": "26895df9-ec98-4c74-9b05-d1388d6ac667",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=.form-error",
+      "targets": [],
+      "value": "Invalid login credentials"
+    }]
+  }, {
+    "id": "a173c063-d020-4d62-b080-dae07e047f14",
+    "name": "Test Login in Page.1",
+    "commands": [{
+      "id": "6782a705-3b6b-48af-8cb6-c683c8bdc483",
+      "comment": "",
+      "command": "open",
+      "target": "https://eventhub123.netlify.app/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "e0cc8d64-f00a-4915-b010-0ad6cf99afb0",
+      "comment": "",
+      "command": "clickAt",
+      "target": "css=.bg-muted:nth-child(1)",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "c90ad6a3-2033-4fab-b42d-83e2b3d102c3",
+      "comment": "",
+      "command": "click",
+      "target": "name=email",
+      "targets": [],
+      "value": "nerciamotsepe@gmail.com"
+    }, {
+      "id": "58dd73ca-2b24-4628-8fc9-bb05b4522e9c",
+      "comment": "",
+      "command": "click",
+      "target": "name=password",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "6820bc6d-3b8a-41a6-b7d8-0f3d5b617cba",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=//div[@id='radix-:r21:-content-signin']/form/button",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ae745910-26ef-4894-b9dd-2595020f42ca",
+      "comment": "",
+      "command": "waitForElementPresent",
+      "target": "css=h1.events-header",
+      "targets": [],
+      "value": "30000"
+    }, {
+      "id": "02091343-2150-4d32-9394-21648816d9fe",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=h1.events-header",
+      "targets": [],
+      "value": "Welcome back! You've been signed in succesfully"
+    }]
+  }],
+  "suites": [{
+    "id": "900455fb-9b7d-4b24-8068-987df4c83be9",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": []
+  }],
+  "urls": ["https://eventhub123.netlify.app/", "https://eventshub123.netlify.app/"],
+  "plugins": []
+}
