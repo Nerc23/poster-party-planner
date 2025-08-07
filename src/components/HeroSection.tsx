@@ -13,21 +13,32 @@ import {
 
 interface HeroSectionProps {
   onLocationSelect: (location: string) => void;
+  onSearch?: (query: string, location: string) => void;
 }
 
-const HeroSection: React.FC<HeroSectionProps> = ({ onLocationSelect }) => {
+const HeroSection: React.FC<HeroSectionProps> = ({ 
+  onLocationSelect, 
+  onSearch 
+}) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedLocation, setSelectedLocation] = useState('Select location');
   const cities = getAllCities();
 
   const handleSearch = () => {
-    // In a real app, this would trigger a search with both terms
-    console.log('Searching for:', searchTerm, 'in location:', selectedLocation);
+    if (onSearch) {
+      onSearch(searchTerm, selectedLocation === 'Select location' ? 'All' : selectedLocation);
+    }
   };
 
   const handleLocationSelect = (city: string) => {
     setSelectedLocation(city);
     onLocationSelect(city);
+  };
+
+  const handleKeyPress = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter') {
+      handleSearch();
+    }
   };
 
   return (
@@ -48,12 +59,13 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onLocationSelect }) => {
               className="pl-10 w-full"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
+              onKeyPress={handleKeyPress}
             />
           </div>
           
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="outline" className="w-full sm:w-auto flex justify-between">
+              <Button variant="outline" className="w-full sm:w-auto flex justify-between min-w-[160px]">
                 <MapPin className="h-4 w-4 mr-2" />
                 <span className="truncate">{selectedLocation}</span>
               </Button>
@@ -71,7 +83,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onLocationSelect }) => {
           </DropdownMenu>
           
           <Button 
-            className="w-full sm:w-auto bg-event-purple hover:bg-event-darkPurple text-white"
+            className="w-full sm:w-auto bg-event-purple hover:bg-event-darkPurple text-white min-w-[120px]"
             onClick={handleSearch}
           >
             Find Events
